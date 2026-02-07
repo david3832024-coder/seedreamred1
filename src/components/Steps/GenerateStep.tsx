@@ -408,13 +408,13 @@ export const GenerateStep: React.FC = () => {
                   handleGenerateImages();
                 }}
                 disabled={!selectedTemplateId || templates.length === 0 || !isAuthenticated || !user || (user && user.credits < splitResults.length * 20)}
-                className="btn-hover-effect"
+                className="btn-hover-effect w-full sm:w-auto"
               >
                 开始生成图片
               </Button>
               
               {/* 调试信息 */}
-              <div className="mt-2 text-xs text-gray-500">
+              <div className="mt-2 text-xs text-gray-500 hidden md:block">
                 <div>调试: 模板={selectedTemplateId ? '✓' : '✗'} | 
                 模板数={templates.length} | 
                 认证={isAuthenticated ? '✓' : '✗'} | 

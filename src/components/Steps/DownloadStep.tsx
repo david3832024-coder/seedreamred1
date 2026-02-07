@@ -205,7 +205,7 @@ export const DownloadStep: React.FC = () => {
         
         {/* 图片展示 */}
         <div>
-          <div className="mb-4 flex justify-between items-center">
+          <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
             <Space>
               <Checkbox
                 checked={selectedImages.length === successCount}
@@ -221,8 +221,11 @@ export const DownloadStep: React.FC = () => {
               onClick={handleDownloadSelected}
               loading={downloading}
               disabled={selectedImages.length === 0}
+              size="middle"
+              className="w-full sm:w-auto"
             >
-              打包下载选中项
+              <span className="hidden sm:inline">打包下载选中项</span>
+              <span className="sm:hidden">下载选中</span>
             </Button>
           </div>
           
@@ -251,19 +254,21 @@ export const DownloadStep: React.FC = () => {
         
         {/* 操作按钮 */}
         <div className="text-center pt-6 border-t">
-          <Space size="large">
+          <Space size="large" wrap className="justify-center">
             <Button
-              size="large"
+              size="middle"
               icon={<HomeOutlined />}
               onClick={handleBackToHome}
+              className="w-full sm:w-auto"
             >
               返回首页
             </Button>
             <Button
               type="primary"
-              size="large"
+              size="middle"
               icon={<FileAddOutlined />}
               onClick={handleStartNew}
+              className="w-full sm:w-auto"
             >
               开始新的转换
             </Button>

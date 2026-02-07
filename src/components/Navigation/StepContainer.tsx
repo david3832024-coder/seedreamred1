@@ -56,27 +56,28 @@ export const StepContainer: React.FC<StepContainerProps> = ({
   };
   
   return (
-    <div className="flex-1 p-6 bg-gray-50">
+    <div className="flex-1 p-2 md:p-6 bg-gray-50">
       <div className="max-w-6xl mx-auto animate-fadeIn">
         <Card 
           className="shadow-sm hover:shadow-md transition-shadow duration-300"
           title={title}
           loading={loading}
         >
-          <div className="min-h-[400px] animate-slideUp">
+          <div className="min-h-[300px] md:min-h-[400px] animate-slideUp">
             {children}
           </div>
           
           {showNavigation && (
-            <div className="mt-6 pt-4 border-t flex justify-between">
+            <div className="mt-4 md:mt-6 pt-4 border-t flex justify-between gap-2">
               <div>
                 {canGoBack && (
                   <Button
                     icon={<LeftOutlined />}
                     onClick={handlePrev}
-                    size="large"
+                    size="middle"
+                    className="text-sm md:text-base"
                   >
-                    {prevText}
+                    <span className="hidden sm:inline">{prevText}</span>
                   </Button>
                 )}
               </div>
@@ -89,9 +90,11 @@ export const StepContainer: React.FC<StepContainerProps> = ({
                     iconPosition="end"
                     onClick={handleNext}
                     disabled={nextDisabled}
-                    size="large"
+                    size="middle"
+                    className="text-sm md:text-base"
                   >
-                    {nextText}
+                    <span className="hidden sm:inline">{nextText}</span>
+                    <span className="sm:hidden">下一步</span>
                   </Button>
                 )}
               </div>

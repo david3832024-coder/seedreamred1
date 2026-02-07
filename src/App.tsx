@@ -155,40 +155,40 @@ function App() {
     <ConfigProvider locale={zhCN}>
       <div className="flex flex-col min-h-screen bg-gray-100">
         {/* Header */}
-        <div className="bg-white shadow-sm px-6 py-3 flex justify-between items-center">
-          <div className="text-xl font-semibold">
-            🌸 文字转小红书
+        <div className="bg-white shadow-sm px-3 md:px-6 py-3 flex justify-between items-center">
+          <div className="text-base md:text-xl font-semibold truncate">
+            🌸 <span className="hidden sm:inline">文字转小红书</span>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-1 md:space-x-3">
             {/* 用户积分显示和入口 */}
             {isAuthenticated && user && (
               <button
                 onClick={() => setCreditsModalVisible(true)}
-                className="flex items-center px-3 py-1 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                className="flex items-center px-2 md:px-3 py-1 text-sm md:text-base text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
               >
-                💎 {user.credits} 积分
+                💎 <span className="hidden sm:inline ml-1">{user.credits} 积分</span>
               </button>
             )}
             
             {/* 积分入口按钮 */}
             <button
               onClick={() => setCreditsModalVisible(true)}
-              className="px-3 py-1 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+              className="px-2 md:px-3 py-1 text-sm md:text-base text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             >
-              💰 积分
+              💰 <span className="hidden sm:inline ml-1">积分</span>
             </button>
             
             <button
               onClick={() => setSettingsModalVisible(true)}
-              className="px-3 py-1 text-gray-600 hover:text-gray-900"
+              className="px-2 md:px-3 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900"
             >
-              ⚙️ 设置
+              ⚙️ <span className="hidden sm:inline ml-1">设置</span>
             </button>
             <button
               onClick={handleHelp}
-              className="px-3 py-1 text-gray-600 hover:text-gray-900"
+              className="px-2 md:px-3 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900"
             >
-              ❓ 帮助
+              ❓ <span className="hidden md:inline ml-1">帮助</span>
             </button>
             
             {/* 认证按钮 */}

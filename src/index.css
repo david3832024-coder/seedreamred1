@@ -216,3 +216,95 @@ code {
 .project-card:hover::before {
   opacity: 1;
 }
+
+/* ============= Mobile Responsive Styles ============= */
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  /* 禁用移动端hover效果 */
+  .card-hover-effect:hover,
+  .btn-hover-effect:hover,
+  .hover-glow:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* 减少动画效果提升性能 */
+  .animate-fadeIn,
+  .animate-slideUp,
+  .animate-slideIn,
+  .animate-fadeInUp {
+    animation: none;
+  }
+  
+  /* 优化卡片间距 */
+  .ant-card {
+    border-radius: 8px;
+  }
+  
+  .ant-card-body {
+    padding: 12px;
+  }
+  
+  /* 优化按钮大小 */
+  .ant-btn {
+    font-size: 14px;
+    height: auto;
+    padding: 4px 12px;
+  }
+  
+  .ant-btn-lg {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  
+  /* 优化输入框 */
+  .ant-input,
+  .ant-input-textarea {
+    font-size: 16px; /* 防止移动端自动缩放 */
+  }
+  
+  /* 优化模态框 */
+  .ant-modal {
+    max-width: 95vw !important;
+    margin: 8px;
+  }
+  
+  .ant-modal-body {
+    padding: 16px;
+  }
+  
+  /* 优化步骤条 */
+  .ant-steps-item-title {
+    font-size: 12px !important;
+  }
+  
+  .ant-steps-item-description {
+    font-size: 11px !important;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  .ant-card-body {
+    padding: 8px;
+  }
+  
+  .ant-btn {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+  
+  /* 优化Glass效果的padding */
+  .glass-morphism {
+    padding: 12px !important;
+  }
+}

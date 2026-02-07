@@ -72,7 +72,7 @@ export const GlassInput: React.FC<GlassInputProps> = ({
   
   return (
     <div 
-      className={`glass-morphism rounded-lg p-6 mb-6 animate-fadeInUp ${
+      className={`glass-morphism rounded-lg p-3 md:p-6 mb-6 animate-fadeInUp ${
         isDragging ? 'drag-over' : ''
       }`}
       onDragOver={handleDragOver}
@@ -85,45 +85,48 @@ export const GlassInput: React.FC<GlassInputProps> = ({
         onChange={(e) => onTextChange(e.target.value)}
         rows={10}
         maxLength={10000}
-        className="!bg-transparent !border-none text-base"
+        className="!bg-transparent !border-none text-sm md:text-base"
         style={{ resize: 'none' }}
       />
       
-      <div className="mt-4 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
+      <div className="mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <div className="flex items-center space-x-2 text-sm">
           <Text className="text-gray-600">
             字数: {inputText.length}/10000
           </Text>
           {inputText.length < MIN_TEXT_LENGTH && inputText.length > 0 && (
-            <Text type="danger" className="text-sm">
-              还需输入 {MIN_TEXT_LENGTH - inputText.length} 字
+            <Text type="danger" className="text-xs md:text-sm">
+              还需 {MIN_TEXT_LENGTH - inputText.length} 字
             </Text>
           )}
         </div>
         
-        <Space>
+        <Space wrap className="justify-end">
           <Button
             icon={<AudioOutlined />}
             onClick={handleVoiceInput}
             className="hover-glow"
             title="语音输入"
+            size="small"
           >
-            语音
+            <span className="hidden sm:inline">语音</span>
           </Button>
           <Button
             icon={<CopyOutlined />}
             onClick={handlePaste}
             className="hover-glow"
+            size="small"
           >
-            粘贴
+            <span className="hidden sm:inline">粘贴</span>
           </Button>
           <Button
             icon={<DeleteOutlined />}
             onClick={handleClear}
             disabled={!inputText}
             danger
+            size="small"
           >
-            清空
+            <span className="hidden sm:inline">清空</span>
           </Button>
         </Space>
       </div>
@@ -134,7 +137,7 @@ export const GlassInput: React.FC<GlassInputProps> = ({
           size="large"
           onClick={onNext}
           disabled={!validators.isValidTextLength(inputText)}
-          className="px-12 hover-glow"
+          className="w-full sm:w-auto sm:px-12 hover-glow"
         >
           下一步 →
         </Button>

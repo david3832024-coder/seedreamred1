@@ -27,17 +27,18 @@ export const StepIndicator: React.FC = () => {
   };
   
   return (
-    <div className="w-full px-8 py-4 bg-white border-b shadow-sm transition-all duration-300">
+    <div className="w-full px-2 md:px-8 py-2 md:py-4 bg-white border-b shadow-sm transition-all duration-300">
       <Steps
         current={currentStep - 1}
         items={steps.map((step) => ({
           title: step.title,
-          description: step.description,
+          description: window.innerWidth >= 768 ? step.description : undefined,
           icon: stepIcons[step.number],
           disabled: !stepHistory.includes(step.number),
         }))}
         onChange={handleStepClick}
         className="max-w-4xl mx-auto"
+        responsive={false}
       />
     </div>
   );

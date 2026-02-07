@@ -155,28 +155,32 @@ export const SplitStep: React.FC = () => {
         <AISplitSettings onSplitRequest={handleSplit} />
         
         {/* 操作栏 */}
-        <div className="flex justify-between items-center mb-4">
-          <Space>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+          <Space wrap>
             <Tag color="blue">共 {splitResults.length} 个部分</Tag>
             <Tag color="green">
               总字数: {splitResults.reduce((sum, r) => sum + r.charCount, 0)}
             </Tag>
           </Space>
-          <Space>
+          <Space wrap>
             <Button
               icon={<PlusOutlined />}
               onClick={handleAdd}
               className="btn-hover-effect"
+              size="small"
             >
-              添加段落
+              <span className="hidden sm:inline">添加段落</span>
+              <span className="sm:hidden">添加</span>
             </Button>
             <Button
               icon={<ReloadOutlined />}
               onClick={handleSplit}
               loading={isSplitting}
               className="btn-hover-effect"
+              size="small"
             >
-              重新拆分
+              <span className="hidden sm:inline">重新拆分</span>
+              <span className="sm:hidden">重新</span>
             </Button>
           </Space>
         </div>
