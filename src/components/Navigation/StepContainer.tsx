@@ -30,6 +30,16 @@ export const StepContainer: React.FC<StepContainerProps> = ({
   const { currentStep, nextStep, prevStep, canGoBack } = useStepStore();
   
   const handleNext = () => {
+    // 发送 GA 自定义事件
+    if (typeof window !== 'undefined' && window.gtag) {
+      const stepInfo = useStepStore.getState().steps.find(s => s.number === currentStep);
+      window.gtag('event', 'step_next_click', {
+        step_number: currentStep,
+        step_title: stepInfo?.title || `步骤${currentStep}`,
+        next_step: currentStep + 1,
+      });
+    }
+    
     if (onNext) {
       onNext();
     } else {
